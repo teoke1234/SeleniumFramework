@@ -18,9 +18,9 @@ public class HomePageTest extends BaseTest {
     public void loginTestfooter(TestData testData) {
         LoginPage loginPage = new LoginPage();
         String footertext = loginPage
-                .loginSuccesfully(testData.username, testData.password)
+                .loginSuccesfully(testData.getUsername(), testData.getPassword())
                 .getFootertext();
-        Assert.assertEquals(footertext,testData.footerTextExpected);
+        Assert.assertEquals(footertext,testData.getFooterTextExpected());
     }
 
 

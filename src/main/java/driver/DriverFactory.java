@@ -1,29 +1,30 @@
 package driver;
 
+import config.ConfigFactory;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 
+import java.net.MalformedURLException;
+
 public final class DriverFactory {
 
-    DriverFactory(){}
+    DriverFactory() {
+    }
 
-    public static WebDriver getDriver(String browserName) {
+    public static WebDriver getDriver(String browsername , String version) throws MalformedURLException {
         WebDriver driver = null;
+        if (ConfigFactory.getConfig().runmode().equalsIgnoreCase("remote")) {
 
-        if (browserName.equalsIgnoreCase("chrome")) {
-            WebDriverManager.chromedriver().setup();
-            driver = new ChromeDriver();
+            driver = RemoteDriverFactory.getRemoteDriver(browsername, version);
 
-        } else if (browserName.equalsIgnoreCase("edge")) {
-            WebDriverManager.edgedriver().setup();
-            driver = new EdgeDriver();
-        } else if (browserName.equalsIgnoreCase("firefox")){
-            WebDriverManager.firefoxdriver().setup();
-            driver = new FirefoxDriver();
+        } else if (ConfigFactory.getConfig().runmode().equalsIgnoreCase("local")) {
+
+            driver = LocalDriverFactory.getLocalDriver(browsername);
         }
+
         return driver;
     }
 }

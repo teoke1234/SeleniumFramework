@@ -16,9 +16,9 @@ public class LoginPageTest extends BaseTest {
     public void loginTest(TestData testData) {
         LoginPage loginPage = new LoginPage();
         String titleHomePage = loginPage
-                .loginSuccesfully(testData.username, testData.password)
+                .loginSuccesfully(testData.getUsername(), testData.getPassword())
                 .getTitleHomePage();
-        Assert.assertEquals(titleHomePage, testData.titleHomePageExpected);
+        Assert.assertEquals(titleHomePage, testData.getTitleHomePageExpected());
     }
 
 
@@ -29,7 +29,7 @@ public class LoginPageTest extends BaseTest {
     public void clickHome(TestData testData) {
         LoginPage loginPage = new LoginPage();
         String titleHomePage = loginPage.clickHome().getTitleHomePage();
-        Assert.assertEquals(titleHomePage, testData.titleHomePageExpected);
+        Assert.assertEquals(titleHomePage, testData.getTitleHomePageExpected());
     }
 
 
