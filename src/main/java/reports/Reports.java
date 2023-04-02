@@ -18,9 +18,11 @@ public final class Reports {
     private static ExtentReports reports;
 
     public static void initReport() {
+        if(Objects.isNull(reports)){
         reports = new ExtentReports();
         ExtentSparkReporter spark = new ExtentSparkReporter(FrameworkConstants.getReportPath());
         reports.attachReporter(spark);
+        }
     }
 
     public static void flushReport() {
@@ -48,7 +50,7 @@ public final class Reports {
 
     public static void assignCategory(CategoryType[] categoryTypes){
         for (CategoryType categoryType: categoryTypes) {
-            ReportManager.getTest().assignCategory(categoryType.name().toString());
+            ReportManager.getTest().assignCategory(categoryType.name());
         }
     }
 

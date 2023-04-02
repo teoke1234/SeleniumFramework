@@ -4,7 +4,7 @@
     <listeners>
         <listener class-name="listeners.TestListener"/>
     </listeners>
-    <test parallel="methods" thread-count="5" name="C:/Users/teoke/IdeaProjects/SeleniumFramework">
+    <test parallel="methods" thread-count="5" name="SeleniumFramework">
         <classes>
             <class name="com.fpt.tests.HomePageTest"/>
             <class name="com.fpt.tests.LoginPageTest"/>

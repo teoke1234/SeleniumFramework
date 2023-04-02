@@ -33,8 +33,5 @@ public class TestData {
     @Column(name = "footertextexpected")
     private String footerTextExpected;
 
-
-
-
 }
 

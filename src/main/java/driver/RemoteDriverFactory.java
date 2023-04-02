@@ -1,8 +1,8 @@
 package driver;
 
 import config.ConfigFactory;
-import lombok.SneakyThrows;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.remote.BrowserType;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
 
@@ -16,13 +16,13 @@ public final class RemoteDriverFactory {
         DesiredCapabilities capabilities = new DesiredCapabilities();
 
         if (browserName.equalsIgnoreCase("chrome")) {
-            capabilities.setBrowserName("chrome");
+            capabilities.setBrowserName(BrowserType.CHROME);
 
         } else if (browserName.equalsIgnoreCase("edge")) {
-            capabilities.setBrowserName("edge");
+            capabilities.setBrowserName(BrowserType.EDGE);
 
         } else if (browserName.equalsIgnoreCase("firefox")) {
-            capabilities.setBrowserName("firefox");
+            capabilities.setBrowserName(BrowserType.FIREFOX);
 
         }
         capabilities.setVersion(version);
