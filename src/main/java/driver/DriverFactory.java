@@ -24,7 +24,7 @@ public final class DriverFactory {
 
             driver = LocalDriverFactory.getLocalDriver(browsername);
         }
-
+        // throw exception when runmote property is null
         return driver;
     }
 }

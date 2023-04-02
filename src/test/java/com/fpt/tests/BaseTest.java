@@ -12,7 +12,6 @@ public class BaseTest {
     protected BaseTest() {
     }
 
-
     @BeforeMethod()
     protected void setUp(Object[] data){
         TestData testData = (TestData) data[0];
