@@ -7,7 +7,7 @@
     <test parallel="methods" thread-count="5" name="SeleniumFramework">
         <classes>
             <class name="com.fpt.tests.HomePageTest"/>
-<!--            <class name="com.fpt.tests.LoginPageTest"/>-->
+            <class name="com.fpt.tests.LoginPageTest"/>
         </classes>
     </test>
 </suite>

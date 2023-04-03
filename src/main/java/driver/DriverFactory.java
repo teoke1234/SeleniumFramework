@@ -1,11 +1,7 @@
 package driver;
 
 import config.ConfigFactory;
-import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.edge.EdgeDriver;
-import org.openqa.selenium.firefox.FirefoxDriver;
 
 import java.net.MalformedURLException;
 
@@ -18,11 +14,11 @@ public final class DriverFactory {
         WebDriver driver = null;
         if (ConfigFactory.getConfig().runmode().equalsIgnoreCase("remote")) {
 
-            driver = RemoteDriverFactory.getRemoteDriver(browsername, version);
+            driver = RemoteDriverFactory.get(browsername, version);
 
         } else if (ConfigFactory.getConfig().runmode().equalsIgnoreCase("local")) {
 
-            driver = LocalDriverFactory.getLocalDriver(browsername);
+            driver = LocalDriverFactory.get(browsername);
         }
         // throw exception when runmote property is null
         return driver;

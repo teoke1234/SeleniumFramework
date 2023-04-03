@@ -24,6 +24,7 @@ public final class Driver {
             }
 
             DriverManager.getDriver().get(ConfigFactory.getConfig().url());
+            DriverManager.getDriver().manage().timeouts().implicitlyWait(ConfigFactory.getConfig().timeout(), TimeUnit.SECONDS);
         }
     }
 

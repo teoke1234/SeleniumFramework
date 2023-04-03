@@ -2,9 +2,7 @@ package reports;
 
 import com.aventstack.extentreports.MediaEntityBuilder;
 import com.aventstack.extentreports.Status;
-import enums.LogType;
 import ultis.ScreenShotUltis;
-import static reports.FrameworkLogger.log;
 
 public final class ReportLogs {
 

@@ -1,5 +1,6 @@
 package pages;
 
+import enums.WaitStrategy;
 import org.openqa.selenium.By;
 import pages.pagecomponents.ControlBarComponents;
 import reports.ReportLogs;
@@ -23,17 +24,17 @@ public class LoginPage {
 
 
     private LoginPage setUsername(String username) {
-        sendKeys(TXTBOX_USERNAME, username, "Username TextBox");
+        sendKeys(TXTBOX_USERNAME, username, WaitStrategy.PRESENCE, "Username TextBox");
         return this;
     }
 
     private LoginPage setPassword(String password) {
-        sendKeys(TXTBOX_PASSWORD, password, "Password TextBox");
+        sendKeys(TXTBOX_PASSWORD, password, WaitStrategy.PRESENCE,"Password TextBox");
         return this;
     }
 
     private void clickLoginbtn() {
-        click(BTN_LOGIN, "Login button");
+        click(BTN_LOGIN, WaitStrategy.CLICKABLE, "Login button");
     }
 
     public HomePage clickHome() {
