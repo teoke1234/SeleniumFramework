@@ -1,6 +1,8 @@
 package reports;
 
 import com.aventstack.extentreports.MediaEntityBuilder;
+import com.aventstack.extentreports.markuputils.ExtentColor;
+import com.aventstack.extentreports.markuputils.MarkupHelper;
 import config.ConfigFactory;
 import enums.LogType;
 import ultis.ScreenShotUltis;

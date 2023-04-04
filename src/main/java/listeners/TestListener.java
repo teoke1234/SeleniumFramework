@@ -1,11 +1,11 @@
 package listeners;
 
 import annotations.FrameworkAnnotations;
-import com.aventstack.extentreports.Status;
+import enums.LogType;
 import org.testng.ITestContext;
 import org.testng.ITestListener;
 import org.testng.ITestResult;
-import reports.ReportLogs;
+import reports.FrameworkLogger;
 import reports.Reports;
 
 import java.util.Arrays;
@@ -24,22 +24,23 @@ public class TestListener implements ITestListener {
 
     @Override
     public void onTestSuccess(ITestResult result) {
-        ReportLogs.pass("Test Case : " + result.getName() + " is pass");
+        FrameworkLogger.log(LogType.PASSLASTRESULT,"Test Case : " + result.getName() + " is pass");
     }
 
     @Override
     public void onTestFailure(ITestResult result) {
-        ReportLogs.fail("Test Case : " + result.getName() + " is failed");
-        ReportLogs.log(result.getThrowable().toString(), Status.FAIL);
-        ReportLogs.log(Arrays.deepToString(result.getThrowable().getStackTrace()), Status.FAIL);
+        FrameworkLogger.log(LogType.FAILLASTRESULT,"Test Case : " + result.getName() + " is failed");
+        FrameworkLogger.log(LogType.INFO,result.getThrowable().toString() );
+        FrameworkLogger.log(LogType.INFO,Arrays.deepToString(result.getThrowable().getStackTrace()));
+
 
     }
 
     @Override
     public void onTestSkipped(ITestResult result) {
-        ReportLogs.skip("Test Case : "+ result.getName() +" is skipped");
-        ReportLogs.log(result.getThrowable().toString(), Status.SKIP);
-        ReportLogs.log(Arrays.deepToString(result.getThrowable().getStackTrace()), Status.SKIP);
+        FrameworkLogger.log(LogType.SKIPLASTRESULT,"Test Case : " + result.getName() + " is skipped");
+        FrameworkLogger.log(LogType.INFO,result.getThrowable().toString() );
+        FrameworkLogger.log(LogType.INFO,Arrays.deepToString(result.getThrowable().getStackTrace()));
     }
 
     @Override

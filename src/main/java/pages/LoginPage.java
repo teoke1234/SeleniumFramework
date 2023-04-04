@@ -3,9 +3,6 @@ package pages;
 import enums.WaitStrategy;
 import org.openqa.selenium.By;
 import pages.pagecomponents.ControlBarComponents;
-import reports.ReportLogs;
-
-import java.lang.reflect.Method;
 
 import static ultis.SeleniumUtils.click;
 import static ultis.SeleniumUtils.sendKeys;
