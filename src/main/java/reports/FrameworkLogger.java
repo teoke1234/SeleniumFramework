@@ -23,7 +23,6 @@ public final class FrameworkLogger {
     private static final Consumer<String> SKIPLASTRESULT = m -> ReportManager.getTest().skip(MarkupHelper.createLabel(m, ExtentColor.ORANGE));
     private static final Consumer<String> INFO = m -> ReportManager.getTest().info(m);
     private static final Consumer<String> CONSOLE = m -> System.out.println("INFO ---------> " + m);
-    private static final Consumer<String> EXTENTANDCONSOLE = PASS.andThen(CONSOLE);
     private static final Consumer<String> TAKESCREENSHOT = message -> ReportManager.getTest().info(
             "Screenshot is captured",
             MediaEntityBuilder
@@ -34,23 +33,23 @@ public final class FrameworkLogger {
 
     static {
         PASSSTEPSSCREENSHOT.put(LogType.PASS, PASS.andThen(CONSOLE).andThen(TAKESCREENSHOT));
-        PASSSTEPSSCREENSHOT.put(LogType.FAIL, FAIL.andThen(CONSOLE).andThen(TAKESCREENSHOT));
+        PASSSTEPSSCREENSHOT.put(LogType.FAIL, FAIL.andThen(CONSOLE));
+        PASSSTEPSSCREENSHOT.put(LogType.FAILANDSCREENSHOT, FAIL.andThen(CONSOLE).andThen(TAKESCREENSHOT));
         PASSSTEPSSCREENSHOT.put(LogType.SKIP, SKIP.andThen(CONSOLE));
         PASSSTEPSSCREENSHOT.put(LogType.INFO, INFO.andThen(CONSOLE));
         PASSSTEPSSCREENSHOT.put(LogType.CONSOLE, CONSOLE);
-        PASSSTEPSSCREENSHOT.put(LogType.EXTENTANDCONSOLE, EXTENTANDCONSOLE);
         PASSSTEPSSCREENSHOT.put(LogType.PASSLASTRESULT, PASSLASTRESULT.andThen(TAKESCREENSHOT));
         PASSSTEPSSCREENSHOT.put(LogType.FAILLASTRESULT, FAILLASTRESULT.andThen(TAKESCREENSHOT));
         PASSSTEPSSCREENSHOT.put(LogType.SKIPLASTRESULT, SKIPLASTRESULT);
 
         SCREENSHOTMAP.put(LogType.PASS, PASS.andThen(CONSOLE));
-        SCREENSHOTMAP.put(LogType.FAIL, FAIL.andThen(TAKESCREENSHOT).andThen(CONSOLE));
+        SCREENSHOTMAP.put(LogType.FAIL, FAIL.andThen(CONSOLE));
+        SCREENSHOTMAP.put(LogType.FAILANDSCREENSHOT, FAIL.andThen(CONSOLE).andThen(TAKESCREENSHOT));
         SCREENSHOTMAP.put(LogType.SKIP, SKIP.andThen(CONSOLE));
         SCREENSHOTMAP.put(LogType.INFO, INFO.andThen(CONSOLE));
         SCREENSHOTMAP.put(LogType.CONSOLE, CONSOLE);
-        SCREENSHOTMAP.put(LogType.EXTENTANDCONSOLE, EXTENTANDCONSOLE.andThen(TAKESCREENSHOT));
-        SCREENSHOTMAP.put(LogType.PASSLASTRESULT, PASSLASTRESULT.andThen(TAKESCREENSHOT));
-        SCREENSHOTMAP.put(LogType.FAILLASTRESULT, FAILLASTRESULT);
+        SCREENSHOTMAP.put(LogType.PASSLASTRESULT, PASSLASTRESULT);
+        SCREENSHOTMAP.put(LogType.FAILLASTRESULT, FAILLASTRESULT.andThen(TAKESCREENSHOT));
         SCREENSHOTMAP.put(LogType.SKIPLASTRESULT, SKIPLASTRESULT);
 
     }
