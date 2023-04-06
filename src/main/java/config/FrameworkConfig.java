@@ -10,4 +10,5 @@ public interface FrameworkConfig extends Config {
     String runmode();
     String remoteurl();
     String passStepsScreenshot();
+    String retryfailedtestcases();
 }

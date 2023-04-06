@@ -1,6 +1,7 @@
 package com.fpt.tests;
 
 import annotations.FrameworkAnnotations;
+import config.ConfigFactory;
 import enums.CategoryType;
 import org.testng.Assert;
 import org.testng.annotations.Test;

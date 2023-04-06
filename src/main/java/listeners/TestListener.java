@@ -2,20 +2,28 @@ package listeners;
 
 import annotations.FrameworkAnnotations;
 import enums.LogType;
-import org.testng.ITestContext;
-import org.testng.ITestListener;
-import org.testng.ITestResult;
+import org.testng.*;
 import reports.FrameworkLogger;
 import reports.Reports;
 
 import java.util.Arrays;
 
-public class TestListener implements ITestListener {
+public class TestListener implements ITestListener, ISuiteListener {
+
+    @Override
+    public void onStart(ISuite suite) {
+        Reports.initReport();
+    }
+
+    @Override
+    public void onFinish(ISuite suite) {
+        Reports.flushReport();
+    }
 
     @Override
     public void onTestStart(ITestResult result) {
-        Reports.createTestReport(result.getMethod().getTestClass().getRealClass().getSimpleName() +
-                " - " + result.getName());
+        Reports.createTestReport(result.getName() +
+                " - " + result.getMethod().getTestClass().getRealClass().getSimpleName());
         Reports.assignAuthor(result.getMethod().getConstructorOrMethod().getMethod()
                 .getAnnotation(FrameworkAnnotations.class).author());
         Reports.assignCategory(result.getMethod().getConstructorOrMethod().getMethod()
@@ -42,13 +50,7 @@ public class TestListener implements ITestListener {
         FrameworkLogger.log(LogType.INFO, Arrays.deepToString(result.getThrowable().getStackTrace()));
     }
 
-    @Override
-    public void onStart(ITestContext context) {
-        Reports.initReport();
-    }
 
-    @Override
-    public void onFinish(ITestContext context) {
-        Reports.flushReport();
-    }
+
+
 }
