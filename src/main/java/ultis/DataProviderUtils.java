@@ -15,13 +15,13 @@ public final class DataProviderUtils {
 
 
     @DataSupplier(runInParallel = true)
-    public static StreamEx<TestData> getData(Method m) {
+    public static StreamEx<TestData> getData() {
 
         return TestDataReader.use(XlsxReader.class)
                 .withTarget(TestData.class)
                 .withSource("Book1.xlsx")
                 .read()
-                .filter(t -> t.getTestcasename().equalsIgnoreCase(m.getName()))
+//                .filter(t -> t.getTestcasename().equalsIgnoreCase(m.getName()))
                 .filter(a -> a.getExecute().equalsIgnoreCase("yes"));
 
     }

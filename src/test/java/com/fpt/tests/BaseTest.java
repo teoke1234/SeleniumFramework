@@ -18,6 +18,7 @@ public class BaseTest {
         Driver.initDriver(testData.getBrowsername(), testData.getVersion());
     }
 
+
     @AfterMethod
     protected void tearDown() {
         Driver.quitDriver();

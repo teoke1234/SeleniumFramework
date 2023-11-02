@@ -16,6 +16,7 @@ public class GoogleForTestOnly extends BaseTest{
     @Test(description = "test google", dataProviderClass = DataProviderUtils.class, dataProvider = "getData")
 
     public void forTestOnly(TestData testData) {
+        System.out.println(testData);
         GooglePage googlePage = new GooglePage();
         googlePage.setToSearchBox(testData.getTitleHomePageExpected());
         Uninterruptibles.sleepUninterruptibly(3, TimeUnit.SECONDS);
